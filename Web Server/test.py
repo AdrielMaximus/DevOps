@@ -1,4 +1,4 @@
-# Python 3 server example
+#Template
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 
