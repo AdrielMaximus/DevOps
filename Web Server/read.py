@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import xml.etree.ElementTree as tree
 file = "Fileexample.csv"
 df = pd.read_csv(file)
 df = pd.read_xml(file)
@@ -12,3 +13,14 @@ with open('fileexample.json', 'r') as openfile:
     json_object = json.load(openfile)
 print(json_object) 
 # Read XML
+tree = etree.parse("fileexample.xml")
+root = tree.getroot()
+columns = ['Name', 'Phone', 'Number', 'Birthday']
+df = pd.DataFrame(columns = columns)
+for node in root:
+    name = node.find("name").text
+    phonenumber = node.find("phonenumber").text
+    birthday = node.find("birthday").text
+    
+df = df.append(pd.Series([name.phonenumber, birthday], index = columns)
+... . ., ignore_index = True)
